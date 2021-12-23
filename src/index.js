@@ -1,171 +1,268 @@
-// Example 1 - Базовые математические операторы
-// Выведи на экран общее количество яблок и винограда. Разницу яблок и винограда.
+console.log('module 1.2')
+  
 
-// const apples = 47;
-// const grapes = 135;
-// // const total = ;
-// console.log(total)
-// const diff = ;
-// console.log(diff)
+// // === break===
 
+// for (let i = 0; i < 1000; i += 5) {
+//     // console.log(i);
+//     if (i  === 710) {
+//       console.log(i);
+//         break;
+//     }         
+// }
 
-const apples = 47;
-const grapes = 135;
-const total = apples + grapes ;
-console.log(total);
-const diff =  Math.abs(apples - grapes);
-console.log(diff)
+// // === continue ==
 
-// Example 2 - Комбинированные операторы
-// Замени выражение переопределения комбинированным оператором +=.
+// for (let i = 0; i < 100; i += 1) {
+//     if (!(i % 5 === 0)) {
+//         continue;
+//     }
+//      console.log(i);
+// }
 
-// let students = 100;
-// students = students + 50;
-// console.log(students);
+// // ==== spam check===
+// const checkForSpam = (message) => {
+//     const words = ['spam', 'sale', 'hui'];
+//     const str = message.toLowerCase();
+//     let hasSpam = false;
+//     for (let i = 0; i < words.length; i += 1) {
+//         let word = words[i];
+//         if (str.includes(word)) 
+//                hasSpam = true;
+//         break;
+//         }
+         
+//     }
 
-let students = 100;
-students += 50;
-console.log(students);
+//     return hasSpam;
+// }
 
-let x = 0;
-x++;
-console.log(--x);
+// console.log(checkForSpam('SPam sapdfasfasf'));
+// console.log(checkForSpam('SPaf'));
+// console.log(checkForSpam('SALE sapdfasfasf'));
+// console.log(checkForSpam('hui hui hui '));
 
-// Example 3 - Приоритет операторов
-// Разбери приоритет операторов в инструкции присвоения значения переменной result.
+/// ===== login check ====
 
-const result = 108 + 223 - 2 * 5;
-console.log(result);
+// const checkForLogin = (userLogin) => {
+//     const logins = ['admin', 'root', 'user'];
+    
+//     let hasLogin = false;
+//     for (const login of logins) {
+//         if (userLogin === login) {
+//             hasLogin = true;
+//         }
+//     }
 
+//     return hasLogin;
+// }
 
-// Example 4 - Класс Math
-// Напиши скрипт, который выводит в консоль округленные вверх/вниз и т.д. значения переменной value.
-//  Используй методы Math.floor(), Math.ceil() и Math.round().Проверь что будет в консоли при значениях 27.3 и 27.9.
+// console.log(checkForLogin('user'));
+// console.log(checkForLogin('root'));
+// console.log(checkForLogin('admhuiin'));
+// console.log(checkForLogin('user'));
 
-const value = 27.5;
-console.log(Math.floor(value));
-console.log(Math.ceil(value));
-console.log(Math.round(value));
+// === Example 1 - Ввод пользователя и ветвления
+// Используя конструкцию if..else и prompt, напиши код, который будет спрашивать: "Какое официальное название JavaScript?". 
+// Если пользователь вводит ECMAScript, то показывай alert со строкой "Верно!", в противном случае - "Не знаете? ECMAScript!"
 
-console.log(~~value) // == 
+// const userInput = prompt("Какое официальное название JavaScript?");
+// let answer;
 
-// Example 5 - Шаблонные строки
-// Составь фразу с помощью шаблонных строк A has B bots in stock, где A, B - переменные вставленные в строку.
-
-// const companyName = 'Cyberdyne Systems';
-// const repairBots = 150;
-// const defenceBots = 50;
-// const message = ``;
-// console.log(message); // "Cyberdyne Systems has 200 bots in stock"
-
-const companyName = 'Cyberdyne Systems';
-const repairBots = 150;
-const defenceBots = 50;
-const message = `Cyberdyne Systems has ${repairBots + defenceBots} bots in stock`;
-console.log(message)
-
-// Example 6 - Методы строк и чейнинг
-// Напиши скрипт который рассчитывает индекс массы тела человека. Для этого необходимо разделить вес в киллограммах 
-// на квадрат высоты человека в метрах.
-
-// Вес и высота хранятся в переменных weight и height, но не как числа, а в виде строк (специально для задачи).
-//  Нецелые числа могут быть заданы в виде 24.7 или 24, 7, то есть в качестве разделителя дробной части может быть запятая.
-
-// Индекс массиы тела необходимо округлить до одной цифры после запятой;
-
-let weight = '88,3';
-let height = '1.75';
-
-
-const bmi = Number.parseFloat(weight.replace(',','.')) / Number.parseFloat(Math.pow(height, 2)) ;
-console.log(bmi.toFixed(1)); // 28.8
+// if (userInput === 'ECMAScript') {
+//     answer = "Верно!";
+// }    else {
+//     answer = "Не знаете? ECMAScript!";
+// }
+// console.log(answer)
 
 
-// Example 7 - Операторы сравнения и приведение типов
-// Каким будет результат выражений?
+// Example 2 - Отображение времени (if...else)
+// Напиши скрипт для отображения часов и минут в консоли браузера в виде строки формата "14 ч. 26 мин.". Если значение переменной minutes равно 0, то выводи строку "14 ч.", без минут.
 
-console.log(5 > 4);
+// const hours = 14;
+// const minutes = 26;
+// const timestring = minutes > 0 ?  `${hours} ч. ${minutes} мин.`:`${hours} ч.`;
 
-console.log(10 >= '7');
-
-console.log('2' > '12');
-
-console.log('2' < '12');  // string
-
-console.log('4' == 4);
-
-console.log('6' === 6);
-
-console.log('false' === false);
-
-console.log(1 == true);
-
-console.log(1 === true);
-
-console.log('0' == false);
-
-console.log('0' === false);
-
-console.log('Papaya' < 'papaya');
-
-console.log('Papaya' === 'papaya');
-
-console.log(undefined == null);
-
-console.log(null === null);
+// console.log(timestring);
 
 
-console.log('Example 8 - Логические операторы')
+// Example 3 - Ветвеления
+// // Напиши скрипт, который выводит в консоль строку "Это положительное число", если в prompt пользователь ввел число больше нуля. 
+// Если был введен ноль, выводи в консоль строку "Это ноль".Если передали отрицательное число, в консоли должна быть строка
+// "Это отрицательное число".
 
-// Каким будет результат выражений?
+// const userInput = prompt('Введите число');
+// const userNumber = parseInt(userInput);
+// let answer;
 
-console.log(true && 3);
-
-console.log(false && 3);
-
-console.log(true && 4 && 'kiwi');
-
-console.log(true && 0 && 'kiwi');
-
-console.log(true || 3);
-
-console.log(true || 3 || 4);
-
-console.log(true || false || 7);
-
-console.log(null || 2 || undefined);
-
-console.log((1 && null && 2) > 0);
-
-console.log(null || (2 && 3) || 4);
+// if (isNaN(userNumber)) {
+//     answer = "not a number"
+// }
+// console.log(answer)
+    
+// if (userNumber > 0) {
+//     answer = "Это положительное число";
+// }
+// else if (userNumber < 0) {
+//     answer = "Это отрицательное число"
+// }
+// else if (userNumber === 0){
+//     answer = "Это ноль"
+// }
+    
+// console.log(answer)     
 
 
-// Example 9 - Значение по умолчанию и оператор нулевого слияния
-// Отрефактори код так, чтобы в переменную value присваивалось значение переменной incomingValue, 
-// если оно не равно undefined или null.В противном случае должно присваиваться значение defaultValue.
-// Проверь работу скрипта для слепдующих значений переменной incomingValue: null, undefined, 0, false.
-// Используй оператор ?? (nullish coalescing operator).
+// Example 4 - Вложенные ветвления
+// Напиши скрипт, который сравнивает числа в переменных a и b. Если оба значения больше 100, то выведи в консоль максимальное из них.
+//  В противном случае в консоли должна быть сумма значения b и числа 512.
 
-const incomingValue = null;
-const defaultValue = 10;
-const value1 = incomingValue || defaultValue;
-console.log(value1);
+// const a = 120;
+// const b = 20;
+
+// const answer = a > 100 && b > 100 ? Math.max(a, b) : b + 512;
+// console.log(answer)
+
+
+// Example 5 - Форматирование ссылки (endsWith)
+// Напиши скрипт который проверяет заканчивается ли значение переменной link символом /.
+//  Если нет, добавь в конец значения link этот символ.Используй конструкцию if...else.
+
+// let link = 'https://my-site.com/about';
+
+// if (!link.endsWith('/')) {
+//     link += "/";
+// }
+
+// console.log(link);
+
+
+// Example 6 - Форматирование ссылки (includes и логическое «И»)
+// Напиши скрипт который проверяет заканчивается ли значение переменной link символом /.
+// Если нет, добавь в конец значения link этот символ, но только в том случае, если в link есть подстрока "my-site".
+// Используй конструкцию if...else.
+
+// let link = 'https://somesite.com/about';
+// // Пиши код ниже этой строки
+
+// // Пиши код выше этой строки
+// console.log(link);
 
 
 
-// Example 10 - Опертор % и методы строк
-// Напиши скрипт который переведёт значение totalMinutes (количество минут) в строку в формате часов и минут HH:MM.
+// Example 7 - Форматирование ссылки (тернарный оператор)
+// Выполни рефакторинг кода задачи номер 4 используя тернарный оператор.
 
-// 70 покажет 01:10
-// 450 покажет 07:30
-// 1441 покажет 24:01
-const totalMinutes = 450;
+// let link = 'https://my-site.somesite.com/about';
+// if (link.includes('my-site') && !link.endsWith('/')) {
+//   link += '/';
+// }
+// console.log(link);
 
-const hours = Math.floor(totalMinutes / 60);
-const minutes = totalMinutes % 60;
-console.log(hours);
-console.log(minutes);
+ 
+// Example 8 - if...else и логические операторы
+// Напиши скрипт который будет выводить в консоль браузера строку в зависимости от значения переменной hours.
 
-const doubleDigitHours = String(hours).padStart(2, 0);
-const doubleDigitMinutes = String(minutes).padStart(2, 0);
-console.log(`${doubleDigitHours}:${doubleDigitMinutes}`);
+// Если значение переменной hours:
+
+// меньше 17, выводи строку "Pending"
+// // больше либо равно 17 и меньше либо равно 24, выводи строку "Expires"
+// // больше 24 , выводи строку "Overdue"
+// const hours = 26;
+// let answer;
+
+// if (hours < 17) {
+//     answer = 'pending'
+// }
+// else if (hours >= 17 && hours <= 24) {
+//     answer = "Expires"
+// }
+// else if (hours > 24){
+//     answer = "Overdue"
+// }
+
+// console.log(answer)
+
+
+
+// Example 9 - Дедлайн сдачи проекта (if...else)
+// Напиши скрипт для отображения времени дедлайна сдачи проекта. Используй конструкцию if...else.
+
+// Eсли до дедлайна 0 дней - выведи строку "Сегодня"
+// Eсли до дедлайна 1 день - выведи строку "Завтра"
+// Eсли до дедлайна 2 дня - выведи строку "Послезавтра"
+// Eсли до дедлайна 3+ дней - выведи строку "Дата в будущем"
+// const daysUntilDeadline = 5;
+// // Пиши код ниже этой строки
+
+
+
+
+
+// // Example 10 - Дедлайн сдачи проекта (switch)
+// // Выполни рефакторинг кода задачи номер 5 используя switch.
+
+// const daysUntilDeadline = -5;
+
+// switch (daysUntilDeadline) {
+//     case 0: {
+//         console.log('Сегодня');
+//         break;
+//     }
+//     case 1: {
+//         console.log('Завтра');
+//         break;
+//     }
+//     case 2: {
+//         console.log('Послезавтра');
+//     }
+//     default:
+//     console.log('Дата в будущем');
+// }
+
+
+
+// Example 11 - Цикл for
+// // Напиши цикл for который выводит в консоль браузера числа по возрастанию от min до max, но только если число кратное 5.
+
+// const max = 100;
+// // const min = 20;
+
+// // for (let i = min; i <= max; i += 1) {
+// //     if (i % 5 === 0) {
+// //         console.log(i);
+// //     }
+// // }
+
+// // Example 12 - Ввод пользователя и ветвления
+// // Напиши скрипт, который будет спрашивать логин с помощью prompt и логировать результат в консоль браузера.
+
+// // Если посетитель вводит "Админ", то prompt запрашивает пароль
+// // Если ничего не введено или нажата клавиша Esc - вывести строку "Отменено"
+// // В противном случае вывести строку "Я вас не знаю"
+// // Пароль проверять так:
+
+// // Если введён пароль "Я админ", то вывести строку "Здравствуйте!"
+// // Иначе выводить строку "Неверный пароль"
+
+// const login = prompt('login');
+
+// if (login === "Админ") {
+//     const password = prompt('password')
+//     if (password === "Я админ") {
+//         console.log("Здравствуйте!")
+//     }
+//     else {
+//         console.log("Неверный пароль")
+//     }
+// }
+// else {
+//     if (!login || login === null) {
+//         console.log("Отменено")
+//     }
+//     else {
+//         console.log("Я вас не знаю")
+//     }
+// }
+
