@@ -128,3 +128,48 @@
 
 // console.log(min,max); // 1
 
+
+// // реверсе строки не меня порядка слов 
+
+// const string = 'Welcome to the future';
+// // split to array of string
+
+// const stringArr = string.split(' ');
+// const resArr = [];
+// // console.log(stringArr)
+// // each word to array 
+// for (let i = 0; i <= stringArr.length - 1; i += 1) {
+//     stringArr[i] = stringArr[i].split('').reverse().join('');
+//     resArr.push(stringArr[i])
+//     // console.log(stringArr[i])
+// }
+// console.log(resArr.join(' '))
+
+// // console.log(stringArr)
+
+
+//codewars task with "(" 
+
+
+// function transform(str) {
+//     const symbols = {};
+//     let result = str;
+
+//     for (let i = 0; i < str.length; i += 1) {
+//         const letter = str[i];
+//         symbols[letter] = symbols[letter] ? symbols[letter] + 1 : 1;
+//     }
+
+//     const symArr = Object.entries(symbols);
+//     console.log(symArr)
+//     symArr.forEach(([key, value]) => {
+//         const newSymbol = value === 1 ? '(' : ')';
+//         result = result.replaceAll(key, newSymbol)
+//     })
+
+//     return result;
+// }
+ 
+// console.log(transform('din'));
+// console.log(transform('recede'))
+// ;
