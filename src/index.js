@@ -1,268 +1,117 @@
-console.log('module 1.2')
+console.log('module 4.1');
   
+// === advanced reduce method ===
 
-// // === break===
-
-// for (let i = 0; i < 1000; i += 5) {
-//     // console.log(i);
-//     if (i  === 710) {
-//       console.log(i);
-//         break;
-//     }         
-// }
-
-// // === continue ==
-
-// for (let i = 0; i < 100; i += 1) {
-//     if (!(i % 5 === 0)) {
-//         continue;
-//     }
-//      console.log(i);
-// }
-
-// // ==== spam check===
-// const checkForSpam = (message) => {
-//     const words = ['spam', 'sale', 'hui'];
-//     const str = message.toLowerCase();
-//     let hasSpam = false;
-//     for (let i = 0; i < words.length; i += 1) {
-//         let word = words[i];
-//         if (str.includes(word)) 
-//                hasSpam = true;
-//         break;
-//         }
-         
-//     }
-
-//     return hasSpam;
-// }
-
-// console.log(checkForSpam('SPam sapdfasfasf'));
-// console.log(checkForSpam('SPaf'));
-// console.log(checkForSpam('SALE sapdfasfasf'));
-// console.log(checkForSpam('hui hui hui '));
-
-/// ===== login check ====
-
-// const checkForLogin = (userLogin) => {
-//     const logins = ['admin', 'root', 'user'];
-    
-//     let hasLogin = false;
-//     for (const login of logins) {
-//         if (userLogin === login) {
-//             hasLogin = true;
-//         }
-//     }
-
-//     return hasLogin;
-// }
+// const tweets = [
+//   { id: "000", likes: 5, tags: ["js", "nodejs"] },
+//   { id: "001", likes: 2, tags: ["html", "css"] },
+//   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+//   { id: "003", likes: 8, tags: ["css", "react"] },
+//   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+// ];
 
-// console.log(checkForLogin('user'));
-// console.log(checkForLogin('root'));
-// console.log(checkForLogin('admhuiin'));
-// console.log(checkForLogin('user'));
-
-// === Example 1 - Ввод пользователя и ветвления
-// Используя конструкцию if..else и prompt, напиши код, который будет спрашивать: "Какое официальное название JavaScript?". 
-// Если пользователь вводит ECMAScript, то показывай alert со строкой "Верно!", в противном случае - "Не знаете? ECMAScript!"
-
-// const userInput = prompt("Какое официальное название JavaScript?");
-// let answer;
+// // console.log(tweets.reduce((acc, item) => acc + item.likes, 0))
 
-// if (userInput === 'ECMAScript') {
-//     answer = "Верно!";
-// }    else {
-//     answer = "Не знаете? ECMAScript!";
-// }
-// console.log(answer)
-
-
-// Example 2 - Отображение времени (if...else)
-// Напиши скрипт для отображения часов и минут в консоли браузера в виде строки формата "14 ч. 26 мин.". Если значение переменной minutes равно 0, то выводи строку "14 ч.", без минут.
-
-// const hours = 14;
-// const minutes = 26;
-// const timestring = minutes > 0 ?  `${hours} ч. ${minutes} мин.`:`${hours} ч.`;
-
-// console.log(timestring);
-
+// const flatTagsTogether = (acc, { tags }) => [...acc, ...tags];
+// const countValues = (acc, item) => ({
+//     ...acc,
+//     [item]: acc[item] ? acc[item] + 1 : 1,
+// });
 
-// Example 3 - Ветвеления
-// // Напиши скрипт, который выводит в консоль строку "Это положительное число", если в prompt пользователь ввел число больше нуля. 
-// Если был введен ноль, выводи в консоль строку "Это ноль".Если передали отрицательное число, в консоли должна быть строка
-// "Это отрицательное число".
+// console.log(tweets.reduce(flatTagsTogether, []).reduce(countValues,{}))
 
-// const userInput = prompt('Введите число');
-// const userNumber = parseInt(userInput);
-// let answer;
-
-// if (isNaN(userNumber)) {
-//     answer = "not a number"
-// }
-// console.log(answer)
-    
-// if (userNumber > 0) {
-//     answer = "Это положительное число";
-// }
-// else if (userNumber < 0) {
-//     answer = "Это отрицательное число"
-// }
-// else if (userNumber === 0){
-//     answer = "Это ноль"
-// }
-    
-// console.log(answer)     
+// ==== Example 1 - Метод map
 
+import { cars } from './cars.js';
 
-// Example 4 - Вложенные ветвления
-// Напиши скрипт, который сравнивает числа в переменных a и b. Если оба значения больше 100, то выведи в консоль максимальное из них.
-//  В противном случае в консоли должна быть сумма значения b и числа 512.
+// ==== Пусть функция getModels возвращает массив моделей (поле model) всех автомобилей.
 
-// const a = 120;
-// const b = 20;
+// const getModels = cars => cars.map((car) => car.model)
 
-// const answer = a > 100 && b > 100 ? Math.max(a, b) : b + 512;
-// console.log(answer)
+// console.table(getModels(cars));
 
+// == Пусть функция makeCarsWithDiscount возвращает новый массив объектов с изменным значением свойства price в зависимости от переданной скидки.
 
-// Example 5 - Форматирование ссылки (endsWith)
-// Напиши скрипт который проверяет заканчивается ли значение переменной link символом /.
-//  Если нет, добавь в конец значения link этот символ.Используй конструкцию if...else.
+// const makeCarsWithDiscount = (cars, discount) =>
+//     cars.map((car) => ({
+//         ...car,
+//         price: car.price - car.price * discount
+//     })
+// );
 
-// let link = 'https://my-site.com/about';
+// console.table(makeCarsWithDiscount(cars, 0.2));
+// console.table(makeCarsWithDiscount(cars, 0.4));
 
-// if (!link.endsWith('/')) {
-//     link += "/";
-// }
+// ====== Пусть функция filterByPrice возвращает массив автомобилей цена которых меньше чем значение параметра threshold.
 
-// console.log(link);
+// const filterByPrice = (cars, threshold) =>  cars.filter((car) => car.price < threshold)
+// ;
 
+// console.table(filterByPrice(cars, 30000));
+// console.table(filterByPrice(cars, 25000));
 
-// Example 6 - Форматирование ссылки (includes и логическое «И»)
-// Напиши скрипт который проверяет заканчивается ли значение переменной link символом /.
-// Если нет, добавь в конец значения link этот символ, но только в том случае, если в link есть подстрока "my-site".
-// Используй конструкцию if...else.
+// ===Пусть функция getCarsWithDiscount возвращает массив автомобилей свойство onSale которых true.
 
-// let link = 'https://somesite.com/about';
-// // Пиши код ниже этой строки
+// const getCarsWithDiscount = cars => cars.filter(({onSale}) => onSale);
 
-// // Пиши код выше этой строки
-// console.log(link);
+// console.table(getCarsWithDiscount(cars));
 
+// ==== Example 5 - Метод filter Пусть функция getCarsWithType возвращает массив автомобилей тип которых совпадает со значением параметра type.
 
+// const getCarsWithType = (cars, type) =>
+//     cars.filter((car) => car.type === type );
 
-// Example 7 - Форматирование ссылки (тернарный оператор)
-// Выполни рефакторинг кода задачи номер 4 используя тернарный оператор.
+// console.table(getCarsWithType(cars, 'suv'));
+// console.table(getCarsWithType(cars, 'sedan'));
 
-// let link = 'https://my-site.somesite.com/about';
-// if (link.includes('my-site') && !link.endsWith('/')) {
-//   link += '/';
-// }
-// console.log(link);
+// const getCarByModel = (cars, model) => cars.find(({model: carModel})  => carModel === model);
 
- 
-// Example 8 - if...else и логические операторы
-// Напиши скрипт который будет выводить в консоль браузера строку в зависимости от значения переменной hours.
+// console.log(getCarByModel(cars, 'F-150'));
+// console.log(getCarByModel(cars, 'CX-9'));
 
-// Если значение переменной hours:
+// ==== Пусть функция sortByAscendingAmount возвращает новый массив автомобилей отсортированный по возврастанию значения свойства amount.
 
-// меньше 17, выводи строку "Pending"
-// // больше либо равно 17 и меньше либо равно 24, выводи строку "Expires"
-// // больше 24 , выводи строку "Overdue"
-// const hours = 26;
-// let answer;
+// const sortByDescendingPrice = cars =>
+//     [...cars].sort((car1,car2) => car1.amount - car2.amount);
 
-// if (hours < 17) {
-//     answer = 'pending'
-// }
-// else if (hours >= 17 && hours <= 24) {
-//     answer = "Expires"
-// }
-// else if (hours > 24){
-//     answer = "Overdue"
-// }
+// console.table(sortByDescendingPrice(cars));
 
-// console.log(answer)
+//  =====  Пусть функция sortByModel возвращает новый массив автомобилей отсортированный по названию модели в алфавитном и обратном алфавитном порядке, в засисимости от значения параметра order.
 
+// const sortByModel = (cars, order) =>
+//     [...cars].sort((car1, car2) =>
+//         order === 'desc'
+//         ? car2.model.localeCompare(car1.model)
+//         : car1.model.localeCompare(car2.model)
+//     )
+// ;
 
+// console.table(sortByModel(cars, 'asc'));
+// console.table(sortByModel(cars, 'desc'));
 
-// Example 9 - Дедлайн сдачи проекта (if...else)
-// Напиши скрипт для отображения времени дедлайна сдачи проекта. Используй конструкцию if...else.
+// ==== Reduce Пусть функция getTotalAmount возвращает общее количество автомобилей(значение свойств amount).
 
-// Eсли до дедлайна 0 дней - выведи строку "Сегодня"
-// Eсли до дедлайна 1 день - выведи строку "Завтра"
-// Eсли до дедлайна 2 дня - выведи строку "Послезавтра"
-// Eсли до дедлайна 3+ дней - выведи строку "Дата в будущем"
-// const daysUntilDeadline = 5;
-// // Пиши код ниже этой строки
+// const getTotalAmount = (cars) => cars.reduce((total, car) => total + car.amount, 0);
 
+// console.log(getTotalAmount(cars));
 
+// ==== Пусть функция getAvailableCarNames возвращает массив моделей автомобилей, но только тех, которые сейчас на распродаже.
 
+// const getModelsOnSale = cars => cars
+//     .filter(({ onSale }) => onSale)
+//     .map(({ model }) => model);
 
 
-// // Example 10 - Дедлайн сдачи проекта (switch)
-// // Выполни рефакторинг кода задачи номер 5 используя switch.
+// // ====== Пусть функция getSortedCarsOnSale возвращает массив автомобилей на распродаже (свойство onSale), отсортированных по возрастанию цены.
 
-// const daysUntilDeadline = -5;
+// const getSortedCarsOnSale = cars => cars
+//     .filter(({ onSale }) => onSale)
+//     .sort((car1,car2) => car1.price - car2.price)
 
-// switch (daysUntilDeadline) {
-//     case 0: {
-//         console.log('Сегодня');
-//         break;
-//     }
-//     case 1: {
-//         console.log('Завтра');
-//         break;
-//     }
-//     case 2: {
-//         console.log('Послезавтра');
-//     }
-//     default:
-//     console.log('Дата в будущем');
-// }
+// console.table(getSortedCarsOnSale(cars));
 
+// const str = 'hello super world'
 
+// const reverseWord = (text) => text.split(' ').map((word) => word.split('').reverse().join('')).join(' ');
 
-// Example 11 - Цикл for
-// // Напиши цикл for который выводит в консоль браузера числа по возрастанию от min до max, но только если число кратное 5.
-
-// const max = 100;
-// // const min = 20;
-
-// // for (let i = min; i <= max; i += 1) {
-// //     if (i % 5 === 0) {
-// //         console.log(i);
-// //     }
-// // }
-
-// // Example 12 - Ввод пользователя и ветвления
-// // Напиши скрипт, который будет спрашивать логин с помощью prompt и логировать результат в консоль браузера.
-
-// // Если посетитель вводит "Админ", то prompt запрашивает пароль
-// // Если ничего не введено или нажата клавиша Esc - вывести строку "Отменено"
-// // В противном случае вывести строку "Я вас не знаю"
-// // Пароль проверять так:
-
-// // Если введён пароль "Я админ", то вывести строку "Здравствуйте!"
-// // Иначе выводить строку "Неверный пароль"
-
-// const login = prompt('login');
-
-// if (login === "Админ") {
-//     const password = prompt('password')
-//     if (password === "Я админ") {
-//         console.log("Здравствуйте!")
-//     }
-//     else {
-//         console.log("Неверный пароль")
-//     }
-// }
-// else {
-//     if (!login || login === null) {
-//         console.log("Отменено")
-//     }
-//     else {
-//         console.log("Я вас не знаю")
-//     }
-// }
-
+// console.log(reverseWord(str))
