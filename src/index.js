@@ -1,6 +1,2 @@
-console.log('module 6.2');
+console.log('module 7.1');
 
-
-// import { cars } from './cars.js';
-
- 
