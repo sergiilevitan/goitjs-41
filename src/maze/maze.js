@@ -1,39 +1,43 @@
-'use strict';
+'use strict'
+
 
 const refs = {
   start: document.querySelector('.start'),
   finish: document.querySelector('.finish'),
   maze: document.querySelector('#maze'),
-  indicator: document.querySelector('#indicator'),
-};
+  indicator: document.querySelector("#indicator"),
+}
 
-let isPlay = false;
+let isInGame = false;
 
 function onStart() {
-  isPlay = true;
-  refs.indicator.textContent = 'Play';
+  isInGame = true;
+  refs.indicator.textContent = "InGame";
 }
 
 function onFinish() {
-  if (isPlay) {
-    isPlay = false;
-    refs.indicator.textContent = 'Win';
+  if (isInGame === true) {
+    isInGame = false;
+    refs.indicator.textContent = "Win";
   }
 }
-
+  
 function onLeave() {
-  if (isPlay) {
-    isPlay = false;
-    refs.indicator.textContent = 'Pause';
+  if (isInGame === true) {
+    isInGame = false;
+    refs.indicator.textContent = "Game over";
   }
+}
+  
+function onMazeOver(e) {
+  if (isInGame && e.target.classList.contains('block')) {
+    isInGame = false;
+    refs.indicator.textContent = 'Game over'
+  }
+
+  console.log(e.target)
 }
 
-function onMazeOver(e) {
-  if (isPlay && e.target.classList.contains('block')) {
-    isPlay = false;
-    refs.indicator.textContent = 'You loose!';
-  }
-}
 
 refs.start.addEventListener('mouseover', onStart);
 refs.finish.addEventListener('mouseover', onFinish);
