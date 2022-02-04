@@ -1,5 +1,15 @@
 console.log('module 7.1');
 
+const instance = basicLightbox.create(`
+    <div class="modal">
+        <p>
+            Your first lightbox with just a few lines of code.
+            Yes, it's really that simple.
+        </p>
+    </div>
+`)
+
+instance.show()
 
 // const colorPalette = document.querySelector(".color-palette");
 // const output = document.querySelector(".output");
